@@ -156,6 +156,47 @@ void DeleteClient(vector<stClient>& clients)
         cout << "Client with Account Number " << AccountNumber << " not found." << endl;
 }
 
+
+
+stClient ConvertLineToRecord(string line, string delimeter = "#//#")
+{
+    stClient client;
+    int pos = line.find(delimeter);
+    client.Name = line.substr(0, pos);
+    line.erase(0, pos + delimeter.size());
+    pos = line.find(delimeter);
+    client.Phone = line.substr(0, pos);
+    line.erase(0, pos + delimeter.size());
+    pos = line.find(delimeter);
+    client.AccountNumber = line.substr(0, pos);
+    line.erase(0, pos + delimeter.size());
+    pos = line.find(delimeter);
+    client.PinCode = line.substr(0, pos);
+    line.erase(0, pos + delimeter.size());
+    client.AccountBalance = stod(line);
+    return client;
+}
+
+vector<stClient> LoadClientsFromFile(string filename)
+{
+    fstream file;
+    vector<stClient> clients;
+    file.open(filename, ios::in);
+    if(file.is_open())
+    {
+        string line;
+        while(getline(file, line))
+        {
+            if(line[0] == '=')
+                continue;
+            clients.push_back(ConvertLineToRecord(line));
+        }
+        file.close();
+    }
+    return clients;
+}
+
+
 void HeaderAddingNewClient()
 {
     system("cls");
@@ -211,48 +252,10 @@ void Header(int NumberOfClients)
     printf("| Acount Number\t | Pin Code | Client Name \t\t\t| Phone \t\t| Balance\n");
     cout<<"-------------------------------------------------------------------------------------------------------\n\n";
 }
+
 void PrintClient(stClient clients)
 {
     printf("| %-14s | %-8s | %-34s| %-22s| %-11lf\n", clients.AccountNumber.c_str(), clients.PinCode.c_str(), clients.Name.c_str(), clients.Phone.c_str(), clients.AccountBalance);
-}
-
-
-stClient ConvertLineToRecord(string line, string delimeter = "#//#")
-{
-    stClient client;
-    int pos = line.find(delimeter);
-    client.Name = line.substr(0, pos);
-    line.erase(0, pos + delimeter.size());
-    pos = line.find(delimeter);
-    client.Phone = line.substr(0, pos);
-    line.erase(0, pos + delimeter.size());
-    pos = line.find(delimeter);
-    client.AccountNumber = line.substr(0, pos);
-    line.erase(0, pos + delimeter.size());
-    pos = line.find(delimeter);
-    client.PinCode = line.substr(0, pos);
-    line.erase(0, pos + delimeter.size());
-    client.AccountBalance = stod(line);
-    return client;
-}
-
-vector<stClient> LoadClientsFromFile(string filename)
-{
-    fstream file;
-    vector<stClient> clients;
-    file.open(filename, ios::in);
-    if(file.is_open())
-    {
-        string line;
-        while(getline(file, line))
-        {
-            if(line[0] == '=')
-                continue;
-            clients.push_back(ConvertLineToRecord(line));
-        }
-        file.close();
-    }
-    return clients;
 }
 
 void PrintClients(vector<stClient> clients)
