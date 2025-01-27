@@ -20,19 +20,11 @@ enum enMainMenueOptions{
     eFindClient   = 5
 };
 
-string ConvertRecordToString(stClient& client)
-{
-    string data = client.Name + "#//#" + client.Phone + "#//#" + client.AccountNumber + "#//#" + client.PinCode + "#//#" + to_string(client.AccountBalance);
-    return data;
-}
-
-
 void EditClient(stClient &client)
 {
     cout<<"Enter new values: "<<endl;
     cout<<"Name: ";
-    cin.ignore();
-    getline(cin, client.Name);
+    getline(cin>>ws, client.Name);
     cout<<"Phone: ";
     getline(cin, client.Phone);
     cout<<"Pin Code: ";
@@ -92,6 +84,12 @@ void FindClient(vector<stClient>& clients)
         cout<<"Client not found.\n";
 }
 
+string ConvertRecordToString(stClient& client)
+{
+    string data = client.Name + "#//#" + client.Phone + "#//#" + client.AccountNumber + "#//#" + client.PinCode + "#//#" + to_string(client.AccountBalance);
+    return data;
+}
+
 void LoadToFile(vector<stClient>& clients)
 {
     fstream file;
@@ -133,12 +131,6 @@ void UpdateClient(vector<stClient> clients)
     }
     else
         printf("Client with Account Number (%s) Not Found!", AccountNumber.c_str());
-}
-void BackToMenu()
-{
-    cout<<"\n\nPress any key to go back to Main Menue...";
-    system("pause>0");
-    
 }
 
 void DeleteClient(vector<stClient>& clients)
@@ -298,6 +290,12 @@ void PerformMainMenuOptions(enMainMenueOptions mainOptionsOptions, vector<stClie
     default:
         break;
     }
+}
+
+void BackToMenu()
+{
+    cout<<"\n\nPress any key to go back to Main Menue...";
+    system("pause>0");
 }
 
 short ReadMainMenuOptions()
