@@ -369,6 +369,11 @@ void PerformingTransaction(enTransactionOptions transactionOptions, vector<stCli
         break;
     }
 }
+void BackToTransactionMenu()
+{
+    cout<<"\n\nPress any key to go back to Main Menue...";
+    system("pause>0");
+}
 
 void Transactions(vector<stClient>& clients)
 {
@@ -379,7 +384,10 @@ void Transactions(vector<stClient>& clients)
         choice = ReadOptions(4);
         PerformingTransaction((enTransactionOptions) choice, clients);
         if(choice < 4 && choice > 0)
+        {
+            BackToTransactionMenu();
             system("pause>0");
+        }
     }while(choice < 4 && choice > 0);
 }
 
