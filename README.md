@@ -1,8 +1,3 @@
-حلو جدًا، شفت الريبو بتاع `Projects-Using_CPP`. هعمل لك README مفصل جاهز تنسخه وتعدّل عليه حسب اللي عملتُه فعلًا.
-
----
-
-```markdown
 # Projects Using C++
 
 A collection of C++ projects showcasing fundamental programming skills, object-oriented design, and problem solving.
@@ -37,40 +32,6 @@ Projects-Using\_CPP/
 ├── README.md
 
 ````
-
----
-
-## 🚀 How to Build & Run
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/ahmedaldsoaky/Projects-Using_CPP.git
-   cd Projects-Using_CPP
-````
-
-2. For each subproject (e.g. **Bank**), compile:
-
-   ```bash
-   cd Bank
-   g++ *.cpp -o BankApp
-   ```
-
-3. Then run the executable:
-
-   ```bash
-   ./BankApp
-   ```
-
-   *(On Windows might be `BankApp.exe`.)*
-
-4. For the smaller projects (**First\_Project**, **Secound\_Project**), similar process:
-
-   ```bash
-   cd ../First_Project
-   g++ *.cpp -o FirstProject
-   ./FirstProject
-   ```
 
 ---
 
@@ -114,8 +75,3 @@ Ahmed Aldsoaky
 Computer Engineering Student, Al-Azhar University
 
 ---
-
-## 📄 License
-
-MIT License (or choose whichever license you prefer)
-
